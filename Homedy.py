@@ -9,9 +9,10 @@ from urllib.request import urlopen as Req
 #Bs4 allow u to find the html code
 
 
-# In[8]:
+# In[48]:
 
 
+#default function (send and get)
 def GetUrl(url):
     Uclient = Req(url)
     page_html = Uclient.read()
@@ -20,9 +21,10 @@ def GetUrl(url):
     return page_soup
 
 
-# In[6]:
+# In[44]:
 
 
+# printing using get.find (bs4)
 def Printing(get):
     info = get.find("div",{"class":"info"}).find("div").text
     name = get.find("div",{"class":"mobile-number-des mobile-counter"}).get("data-mobile")
@@ -36,7 +38,7 @@ get = GetUrl(url)
 Printing(get)
 
 
-# In[21]:
+# In[64]:
 
 
 def LoopUrls(CombineUrls,n2):
@@ -47,10 +49,11 @@ def LoopUrls(CombineUrls,n2):
         print(CombineUrl+selectUrl)
         link = GetUrl(CombineUrl+selectUrl)
         n2 = n2+1
-    
+        Printing(link)
+        
 
 
-# In[26]:
+# In[65]:
 
 
 #https://repl.it/@baobaoack000/WebscrapingDemoRequest#main2.py
@@ -70,8 +73,7 @@ for i in range(0,2):
 
 #href Urls compination(default setting 0)
     LoopUrls('https://homedy.com/ban-nha-dat',0)
-    
-    
+  
 
 
 # In[ ]:
